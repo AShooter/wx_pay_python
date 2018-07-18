@@ -51,10 +51,10 @@ def create_pay_example():
             total_fee=100  # total_fee 单位是 分， 100 = 1元
             # spbill_create_ip='210.50.0.10'    # 若不使用flask框架，则需要传入调用微信支付的用户ip地址
         )
-        print pay_data
+        print (pay_data)
         # 订单生成后将请将返回的json数据 传入前端页面微信支付js的参数部分
         return jsonify(pay_data)
-    except WxPayError, e:
+    except WxPayError as e:
         return e.message, 400
 
 
@@ -142,10 +142,10 @@ def download_bill_example():
         wx_mch_key='WX_MCH_KEY',
         wx_notify_url='http://www.example.com/pay/weixin/notify'
     )
-    print wx_pay.download_bill(
+    print (wx_pay.download_bill(
         bill_date='20161228',  # 对账单日期
         bill_type='ALL'  # 账单类型(ALL-当日所有订单信息，[默认]SUCCESS-当日成功支付的订单, REFUND-当日退款订单)
-    )
+    ))
 
 
 def send_red_pack_to_user_example():

@@ -3,7 +3,7 @@ import hashlib
 import random
 import string
 import time
-import urllib2
+import urllib.request as urllib2
 
 import requests
 
@@ -86,7 +86,7 @@ class WxPay(object):
         req = urllib2.Request(url, data=self.to_xml(data))
         try:
             resp = self.opener.open(req, timeout=20)
-        except urllib2.HTTPError, e:
+        except urllib2.HTTPError as e:
             resp = e
         re_info = resp.read()
         try:
